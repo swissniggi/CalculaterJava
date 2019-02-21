@@ -50,7 +50,7 @@ class CommandAction implements ActionListener {
 	
 	public double calculateFaculty(double x) {
 		double faculty = 1;
-		for (int i = 1; i <= x; i++) {
+		for (int i = 2; i <= x; i++) {
 			faculty *= i;
 		}
 		
