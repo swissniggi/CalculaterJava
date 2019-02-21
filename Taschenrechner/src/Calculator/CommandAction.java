@@ -28,8 +28,8 @@ class CommandAction implements ActionListener {
 			double x = Double.parseDouble(panel.display.getText());
 			panel.display.setText("" + 1/x);
 		} else if (panel.start) {
-			if (command.contentEquals("-")) {
-				panel.display.setText(command);
+			if (command.contentEquals("\u2212")) {
+				panel.display.setText("-");
 				panel.start = false;
 			}  else {
 				panel.lastCommand = command;
@@ -43,8 +43,8 @@ class CommandAction implements ActionListener {
 	
 	public void calculate(double x) {
 		if (panel.lastCommand.contentEquals("+")) panel.result += x;
-		else if (panel.lastCommand.contentEquals("-")) panel.result -= x;
-		else if (panel.lastCommand.contentEquals("*")) panel.result *= x;
+		else if (panel.lastCommand.contentEquals("\u2212")) panel.result -= x;
+		else if (panel.lastCommand.contentEquals("\u00D7")) panel.result *= x;
 		else if (panel.lastCommand.contentEquals("/")) panel.result /= x;
 		else if (panel.lastCommand.contentEquals("=")) panel.result = x;
 		else if (panel.lastCommand.contentEquals("%")) panel.result = panel.result % x;

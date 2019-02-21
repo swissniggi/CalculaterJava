@@ -34,13 +34,13 @@ class CalculatorPanel extends JPanel {
 		addButton("5", insert, "O");
 		addButton("6", insert, "O");
 		addButton("+", command, "P");		
-		addButton("-", command, "P");
+		addButton("\u2212", command, "P");
 				
 		
 		addButton("1", insert, "O");
 		addButton("2", insert, "O");
 		addButton("3", insert, "O");
-		addButton("*", command, "P");
+		addButton("\u00D7", command, "P");
 		addButton("%", command, "P");
 		
 		addButton(".", insert, "O");
@@ -71,7 +71,7 @@ class CalculatorPanel extends JPanel {
 			button.setBackground(Color.orange);
 		} else if (color == "P") {
 			button.setBackground(Color.pink);
-			button.setFont(new Font("Default", Font.BOLD, 16));
+			button.setFont(new Font("SegoeUISymbol", Font.BOLD, 16));
 		}
 		panel.add(button);
 	}
