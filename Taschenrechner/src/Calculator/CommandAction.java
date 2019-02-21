@@ -21,6 +21,9 @@ class CommandAction implements ActionListener {
 			panel.result = 0;
 			panel.display.setText("");
 			panel.start = true;
+		} else if (command.contentEquals("!")) {
+			double x = Double.parseDouble(panel.display.getText());
+			panel.display.setText("" + calculateFaculty(x));
 		} else if (panel.start) {
 			if (command.contentEquals("-")) {
 				panel.display.setText(command);
@@ -43,6 +46,15 @@ class CommandAction implements ActionListener {
 		else if (panel.lastCommand.contentEquals("=")) panel.result = x;
 		else if (panel.lastCommand.contentEquals("%")) panel.result = panel.result % x;
 		panel.display.setText("" + panel.result);
+	}
+	
+	public double calculateFaculty(double x) {
+		double faculty = 1;
+		for (int i = 1; i <= x; i++) {
+			faculty *= i;
+		}
+		
+		return faculty;
 	}
 	
 	private CalculatorPanel panel;
