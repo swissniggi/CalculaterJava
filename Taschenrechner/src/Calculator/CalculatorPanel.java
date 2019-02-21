@@ -24,43 +24,55 @@ class CalculatorPanel extends JPanel {
 		panel = new JPanel();
 		panel.setLayout(new GridLayout(5, 5));
 		
-		addButton("7", insert);
-		addButton("8", insert);
-		addButton("9", insert);
-		addButton("CE", command);
-		addButton("/", command);
+		addButton("7", insert, "O");
+		addButton("8", insert, "O");
+		addButton("9", insert, "O");
+		addButton("CE", command, "Y");
+		addButton("/", command, "P");
 		
-		addButton("4", insert);
-		addButton("5", insert);
-		addButton("6", insert);
-		addButton("+", command);		
-		addButton("-", command);
+		addButton("4", insert, "O");
+		addButton("5", insert, "O");
+		addButton("6", insert, "O");
+		addButton("+", command, "P");		
+		addButton("-", command, "P");
 				
 		
-		addButton("1", insert);
-		addButton("2", insert);
-		addButton("3", insert);
-		addButton("*", command);
-		addButton("%", command);
+		addButton("1", insert, "O");
+		addButton("2", insert, "O");
+		addButton("3", insert, "O");
+		addButton("*", command, "P");
+		addButton("%", command, "P");
 		
-		addButton("0", insert);
-		addButton(".", insert);			
-		addButton("\u221A", command);		
-		addButton("x\u00B2", command);	
-		addButton("Pi", insert);
+		addButton(".", insert, "O");
+		addButton("0", insert, "O");
+		addButton("Pi", insert, "O");
+		addButton("1/x", command, "P");
+		addButton("x\u00B2", command, "P");	
 		
-		addButton("!", command);
-		addButton("",null);
-		addButton("",null);
-		addButton("",null);
-		addButton("=", command);
+				
+		addButton("",null,null);
+		addButton("",null,null);		
+		addButton("=", command, "G");
+		addButton("!", command, "P");
+		addButton("\u221A", command, "P");		
 		
 		add(panel, BorderLayout.CENTER);
 	}
 	
-	private void addButton(String label, ActionListener listener) {
+	private void addButton(String label, ActionListener listener, String color) {
 		JButton button = new JButton(label);
 		button.addActionListener(listener);
+		
+		if (color == "Y") {
+			button.setBackground(Color.yellow);
+		} else if (color == "G") {
+			button.setBackground(Color.green);
+		} else if (color == "O") {
+			button.setBackground(Color.orange);
+		} else if (color == "P") {
+			button.setBackground(Color.pink);
+			button.setFont(new Font("Default", Font.BOLD, 16));
+		}
 		panel.add(button);
 	}
 	

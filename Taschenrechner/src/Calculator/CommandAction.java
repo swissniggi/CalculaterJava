@@ -24,6 +24,9 @@ class CommandAction implements ActionListener {
 		} else if (command.contentEquals("!")) {
 			double x = Double.parseDouble(panel.display.getText());
 			panel.display.setText("" + calculateFaculty(x));
+		} else if (command.contentEquals("1/x")) {
+			double x = Double.parseDouble(panel.display.getText());
+			panel.display.setText("" + 1/x);
 		} else if (panel.start) {
 			if (command.contentEquals("-")) {
 				panel.display.setText(command);
