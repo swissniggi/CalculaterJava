@@ -8,5 +8,6 @@ class CalculatorFrame extends JFrame {
 		CalculatorPanel panel = new CalculatorPanel();
 		add(panel);	
 		pack();
+		setSize(500, 300);
 	}
 }

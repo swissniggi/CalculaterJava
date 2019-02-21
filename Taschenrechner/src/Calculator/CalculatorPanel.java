@@ -13,6 +13,8 @@ class CalculatorPanel extends JPanel {
 		start = true;
 		
 		display = new JButton("0");
+		display.setPreferredSize(new Dimension(500, 40));
+		display.setFont(new Font("Arial", Font.PLAIN, 18));		
 		display.setEnabled(false);
 		add(display, BorderLayout.NORTH);
 		
