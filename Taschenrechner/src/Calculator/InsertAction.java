@@ -15,7 +15,7 @@ class InsertAction implements ActionListener {
 			panel.start = false;
 		}
 		
-		if (input == "Pi" && panel.display.getText() == "") {
+		if (input == "\u03C0" && panel.start == false) {
 			panel.display.setText("" + Math.PI);
 		} else {
 			panel.display.setText(panel.display.getText() + input);
