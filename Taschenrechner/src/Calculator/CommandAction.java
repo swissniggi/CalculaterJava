@@ -10,14 +10,7 @@ class CommandAction implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		String command = event.getActionCommand();
 		
-		if (panel.start) {
-			if (command.contentEquals("-")) {
-				panel.display.setText(command);
-				panel.start = false;
-			}  else {
-				panel.lastCommand = command;
-			}
-		} else if (command.contentEquals("x\u00B2")) {
+		if (command.contentEquals("x\u00B2")) {
 			double x = Double.parseDouble(panel.display.getText());
 			panel.display.setText("" + Math.round(x*x));
 		} else if (command.contentEquals("\u221A")) {
@@ -28,6 +21,13 @@ class CommandAction implements ActionListener {
 			panel.result = 0;
 			panel.display.setText("");
 			panel.start = true;
+		} else if (panel.start) {
+			if (command.contentEquals("-")) {
+				panel.display.setText(command);
+				panel.start = false;
+			}  else {
+				panel.lastCommand = command;
+			}
 		} else {
 			calculate(Double.parseDouble(panel.display.getText()));
 			panel.lastCommand = command;
