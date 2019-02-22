@@ -14,8 +14,9 @@ class CalculatorPanel extends JPanel {
 		
 		display = new JButton("0");
 		display.setPreferredSize(new Dimension(500, 40));
-		display.setFont(new Font("Arial", Font.PLAIN, 18));		
+		display.setFont(new Font("Arial", Font.PLAIN, 18));
 		display.setEnabled(false);
+		UIManager.put("Button.disabledText", Color.black);
 		add(display, BorderLayout.NORTH);
 		
 		ActionListener insert = new InsertAction(this);
