@@ -1,9 +1,11 @@
 package Calculator;
+import java.io.FileNotFoundException;
+
 import javax.swing.*;
 
 class CalculatorFrame extends JFrame {
 	
-	public CalculatorFrame() {
+	public CalculatorFrame() throws FileNotFoundException {
 		setTitle("Taschenrechner");
 		CalculatorPanel panel = new CalculatorPanel();
 		add(panel);	

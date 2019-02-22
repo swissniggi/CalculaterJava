@@ -7,6 +7,7 @@ class InsertAction implements ActionListener {
 		panel = calculatorPanel;
 	}
 	
+	@Override
 	public void actionPerformed(ActionEvent event) {
 		String input = event.getActionCommand();
 		

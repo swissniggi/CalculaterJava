@@ -7,6 +7,7 @@ class CommandAction implements ActionListener {
 		panel = calculatorPanel;
 	}
 	
+	@Override
 	public void actionPerformed(ActionEvent event) {
 		String command = event.getActionCommand();
 		

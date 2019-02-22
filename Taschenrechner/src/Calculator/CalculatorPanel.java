@@ -2,10 +2,14 @@ package Calculator;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import org.json.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 class CalculatorPanel extends JPanel {
 	
-	public CalculatorPanel() {
+	public CalculatorPanel() throws FileNotFoundException {
 		setLayout(new BorderLayout());
 		
 		result = 0;
@@ -25,37 +29,25 @@ class CalculatorPanel extends JPanel {
 		panel = new JPanel();
 		panel.setLayout(new GridLayout(5, 5));
 		
-		addButton("7", insert, "O");
-		addButton("8", insert, "O");
-		addButton("9", insert, "O");
-		addButton("CE", command, "Y");
-		addButton("/", command, "P");
+		Scanner scn = new Scanner(new File("src/Calculator/buttons.json"));
+		scn.useDelimiter("\\Z");
+		JSONObject buttons = new JSONObject(scn.next());
+		scn.close();
+		JSONArray arrButtons = buttons.getJSONArray("buttons");
 		
-		addButton("4", insert, "O");
-		addButton("5", insert, "O");
-		addButton("6", insert, "O");
-		addButton("+", command, "P");		
-		addButton("\u2212", command, "P");
-				
-		
-		addButton("1", insert, "O");
-		addButton("2", insert, "O");
-		addButton("3", insert, "O");
-		addButton("\u00D7", command, "P");
-		addButton("%", command, "P");
-		
-		addButton(".", insert, "O");
-		addButton("0", insert, "O");
-		addButton("\u03C0", insert, "O");
-		addButton("1/x", command, "P");
-		addButton("x\u00B2", command, "P");	
-		
-				
-		addButton("",null,null);
-		addButton("",null,null);		
-		addButton("=", command, "G");
-		addButton("!", command, "P");
-		addButton("\u221A", command, "P");		
+		for (int i = 0; i < arrButtons.length(); i++) {
+			String text = arrButtons.getJSONObject(i).getString("text");
+			String action = arrButtons.getJSONObject(i).getString("action");
+			String color = arrButtons.getJSONObject(i).getString("color");
+			
+			if (action.contentEquals("insert")) {
+				addButton(text, insert, color);
+			} else if (action.contentEquals("command")) {
+				addButton(text, command, color);
+			} else {
+				addButton(text, null, null);
+			}
+		}
 		
 		add(panel, BorderLayout.CENTER);
 	}
@@ -64,15 +56,17 @@ class CalculatorPanel extends JPanel {
 		JButton button = new JButton(label);
 		button.addActionListener(listener);
 		
-		if (color == "Y") {
-			button.setBackground(Color.yellow);
-		} else if (color == "G") {
-			button.setBackground(Color.green);
-		} else if (color == "O") {
-			button.setBackground(Color.orange);
-		} else if (color == "P") {
-			button.setBackground(Color.pink);
-			button.setFont(new Font("SegoeUISymbol", Font.BOLD, 16));
+		if (color != null) {
+			if (color.contentEquals("Y")) {
+				button.setBackground(Color.yellow);
+			} else if (color.contentEquals("G")) {
+				button.setBackground(Color.green);
+			} else if (color.contentEquals("O")) {
+				button.setBackground(Color.orange);
+			} else if (color.contentEquals("P")) {
+				button.setBackground(Color.pink);
+				button.setFont(new Font("SegoeUISymbol", Font.BOLD, 16));
+			}
 		}
 		panel.add(button);
 	}
