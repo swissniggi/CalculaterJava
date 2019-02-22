@@ -12,7 +12,7 @@ class CommandAction implements ActionListener {
 		
 		if (command.contentEquals("x\u00B2")) {
 			double x = Double.parseDouble(panel.display.getText());
-			panel.display.setText("" + Math.round(x*x));
+			panel.display.setText("" + x*x);
 		} else if (command.contentEquals("\u221A")) {
 			double x = Double.parseDouble(panel.display.getText());
 			panel.display.setText("" + Math.sqrt(x));

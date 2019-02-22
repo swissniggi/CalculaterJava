@@ -76,8 +76,8 @@ class CalculatorPanel extends JPanel {
 		panel.add(button);
 	}
 	
-	protected JButton display;
 	private JPanel panel;
+	protected JButton display;	
 	protected double result;
 	protected String lastCommand;
 	protected boolean start;
