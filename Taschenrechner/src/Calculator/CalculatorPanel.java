@@ -16,6 +16,7 @@ class CalculatorPanel extends JPanel {
 		lastCommand = "=";
 		start = true;
 		
+		// Display erstellen
 		display = new JButton("0");
 		display.setPreferredSize(new Dimension(500, 40));
 		display.setFont(new Font("Arial", Font.PLAIN, 18));
@@ -29,12 +30,14 @@ class CalculatorPanel extends JPanel {
 		panel = new JPanel();
 		panel.setLayout(new GridLayout(5, 5));
 		
+		// JSON-File auslesen
 		Scanner scn = new Scanner(new File("src/Calculator/buttons.json"));
 		scn.useDelimiter("\\Z");
 		JSONObject buttons = new JSONObject(scn.next());
 		scn.close();
 		JSONArray arrButtons = buttons.getJSONArray("buttons");
 		
+		// Buttons erstellen
 		for (int i = 0; i < arrButtons.length(); i++) {
 			String text = arrButtons.getJSONObject(i).getString("text");
 			String action = arrButtons.getJSONObject(i).getString("action");
@@ -52,10 +55,12 @@ class CalculatorPanel extends JPanel {
 		add(panel, BorderLayout.CENTER);
 	}
 	
+	// erstellt Buttons
 	private void addButton(String label, ActionListener listener, String color) {
 		JButton button = new JButton(label);
 		button.addActionListener(listener);
 		
+		// Hintergrundfarbe definieren
 		if (color != null) {
 			if (color.contentEquals("Y")) {
 				button.setBackground(Color.yellow);

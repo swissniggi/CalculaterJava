@@ -8,6 +8,7 @@ class InsertAction implements ActionListener {
 	}
 	
 	@Override
+	// gibt die gewünschte Zahl/Ziffer aus
 	public void actionPerformed(ActionEvent event) {
 		String input = event.getActionCommand();
 		
