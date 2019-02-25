@@ -61,7 +61,7 @@ class CommandAction implements ActionListener {
 		if (panel.lastCommand.contentEquals("+")) panel.result += x;
 		else if (panel.lastCommand.contentEquals("\u2212")) panel.result -= x;
 		else if (panel.lastCommand.contentEquals("\u00D7")) panel.result *= x;
-		else if (panel.lastCommand.contentEquals("/")) panel.result /= x;
+		else if (panel.lastCommand.contentEquals("\u00F7")) panel.result /= x;
 		else if (panel.lastCommand.contentEquals("=")) panel.result = x;
 		else if (panel.lastCommand.contentEquals("%")) panel.result = panel.result % x;
 		panel.display.setText("" + panel.result);

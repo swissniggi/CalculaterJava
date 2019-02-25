@@ -3,13 +3,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import org.json.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
 
 class CalculatorPanel extends JPanel {
 	
-	public CalculatorPanel() throws FileNotFoundException {
+	public CalculatorPanel() {
 		setLayout(new BorderLayout());
 		
 		result = 0;
@@ -30,11 +27,8 @@ class CalculatorPanel extends JPanel {
 		panel = new JPanel();
 		panel.setLayout(new GridLayout(5, 5));
 		
-		// JSON-File auslesen
-		Scanner scn = new Scanner(new File("src/Calculator/buttons.json"));
-		scn.useDelimiter("\\Z");
-		JSONObject buttons = new JSONObject(scn.next());
-		scn.close();
+		// JSON auslesen
+		JSONObject buttons = new JSONObject(JSON.getJSON());
 		JSONArray arrButtons = buttons.getJSONArray("buttons");
 		
 		// Buttons erstellen
